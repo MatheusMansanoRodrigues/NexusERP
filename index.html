@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusERP | Portal de Business Intelligence & Gestão</title>
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="NexusERP - O dashboard analítico de alta performance para empresas modernas. Visualize faturamento, controle estoque, gerencie equipes e integre sistemas em tempo real.">
+    <meta name="keywords"
+        content="erp, dashboard, business intelligence, gestão financeira, controle de estoque, crm, performance">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome 6 (Ícones Modernos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap 5 CSS (Estrutura de Grid Responsiva) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS para Estética Ultra-Premium -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Círculos de Brilho de Fundo (Glow Effect) -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Container Principal do App -->
+    <div class="app-container">
+
+        <!-- ==========================================
+             SIDEBAR: BARRA LATERAL ULTRA-PREMIUM
+             ========================================== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon-box">
+                        <i class="fa-solid fa-cube logo-icon-spin"></i>
+                    </div>
+                    <span class="logo-text">Nexus<span class="logo-accent">ERP</span></span>
+                </div>
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Perfil do Usuário Logado -->
+            <div class="sidebar-user">
+                <div class="user-avatar-container">
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <span class="user-status-dot online"></span>
+                </div>
+                <div class="user-info">
+                    <h6 class="user-name">Drazen Tech</h6>
+                    <span class="user-role"><i class="fa-solid fa-circle-check text-info me-1"></i>Administrador</span>
+                </div>
+            </div>
+
+            <!-- Menu de Navegação -->
+            <nav class="sidebar-nav">
+                <div class="menu-category">Geral</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-tab="dashboard" id="nav-dashboard">
+                            <i class="fa-solid fa-chart-line nav-icon"></i>
+                            <span>Dashboard Geral</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="financeiro" id="nav-financeiro">
+                            <i class="fa-solid fa-wallet nav-icon"></i>
+                            <span>Financeiro</span>
+                            <span class="badge-custom badge-success" id="badge-receitas">Ok</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="vendas" id="nav-vendas">
+                            <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                            <span>Vendas & CRM</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="estoque" id="nav-estoque">
+                            <i class="fa-solid fa-boxes-stacked nav-icon"></i>
+                            <span>Estoque</span>
+                            <span class="badge-custom badge-warning d-none" id="badge-estoque-alerta">!</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="menu-category">Administração</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="rh" id="nav-rh">
+                            <i class="fa-solid fa-users-gear nav-icon"></i>
+                            <span>RH & Performance</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="configuracoes" id="nav-configuracoes">
+                            <i class="fa-solid fa-sliders nav-icon"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Rodapé da Sidebar -->
+            <div class="sidebar-footer">
+                <div class="database-status mb-2">
+                    <span class="dot pulse-blue"></span>
+                    <span class="db-status-text">BD Local Sincronizado</span>
+                </div>
+                <div class="version">Versão 2.4.1 (PRO)</div>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             ÁREA PRINCIPAL DE CONTEÚDO
+             ========================================== -->
+        <main class="main-content">
+
+            <!-- TOPBAR: BARRA SUPERIOR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <div class="breadcrumb-container">
+                        <span class="breadcrumb-parent">NexusERP</span>
+                        <i class="fa-solid fa-chevron-right breadcrumb-separator"></i>
+                        <span class="breadcrumb-current" id="currentTabTitle">Dashboard Geral</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <!-- Data & Hora Realistas -->
+                    <div class="system-time-box d-none d-md-flex">
+                        <i class="fa-regular fa-clock me-2 text-primary"></i>
+                        <span id="systemClock">20/05/2026 10:22</span>
+                    </div>
+
+                    <!-- Busca Global Rápida -->
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="globalSearch" class="search-input" placeholder="Pesquisar no ERP...">
+                    </div>
+
+                    <!-- Notificações com Efeito de Glow -->
+                    <div class="notification-bell" id="notificationBtn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-badge" id="notif-badge">3</span>
+
+                        <!-- Dropdown de Notificações -->
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notif-header">
+                                <h6>Central de Notificações</h6>
+                                <span class="notif-clear-all" id="clearNotifBtn">Limpar</span>
+                            </div>
+                            <div class="notif-body" id="notifList">
+                                <div class="notif-item unread">
+                                    <div class="notif-icon bg-warning-glow"><i
+                                            class="fa-solid fa-triangle-exclamation"></i></div>
+                                    <div class="notif-details">
+                                        <p class="notif-message"><strong>Estoque Baixo:</strong> Mini Router Wi-Fi
+                                            atingiu limite mínimo (4 un.)</p>
+                                        <span class="notif-time">Há 5 minutos</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item unread">
+                                    <div class="notif-icon bg-success-glow"><i
+                                            class="fa-solid fa-money-bill-trend-up"></i></div>
+                                    <div class="notif-details">
+                                        <p class="notif-message"><strong>Nova Venda:</strong> R$ 2.450,00 via Shopify
+                                            Integrador</p>
+                                        <span class="notif-time">Há 15 minutos</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item unread">
+                                    <div class="notif-icon bg-info-glow"><i class="fa-solid fa-network-wired"></i></div>
+                                    <div class="notif-details">
+                                        <p class="notif-message">Integração Mercado Livre sincronizada com sucesso</p>
+                                        <span class="notif-time">Há 1 hora</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notif-footer">
+                                <a href="#" id="viewAllNotif">Ver todas as notificações</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Sincronização Dinâmica e Paleta de Cores -->
+                    <button class="sync-btn me-2" id="quickThemeBtn" title="Alternar Tema Rápido">
+                        <i class="fa-solid fa-palette"></i>
+                    </button>
+                    <button class="sync-btn" id="syncSystemBtn" title="Forçar Sincronização de Dados">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- CONTAINER DINÂMICO DE ABAS (SPA) -->
+            <div class="content-body">
+
+                <!-- ==========================================
+                     ABA 1: DASHBOARD GERAL (OVERVIEW)
+                     ========================================== -->
+                <div class="content-pane active" id="tab-dashboard">
+                    <!-- Grid de KPIs (Top Cards) -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card premium-card card-glow-purple">
+                                <div class="kpi-card-header">
+                                    <div>
+                                        <span class="kpi-title">Faturamento Mensal</span>
+                                        <h3 class="kpi-value" id="kpi-faturamento">R$ 142.850,00</h3>
+                                    </div>
+                                    <div class="kpi-icon-box bg-purple-glow">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="kpi-card-footer">
+                                    <span class="trend-indicator up">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +12.4%
+                                    </span>
+                                    <span class="kpi-footer-text">vs. mês anterior</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card premium-card card-glow-cyan">
+                                <div class="kpi-card-header">
+                                    <div>
+                                        <span class="kpi-title">Clientes Ativos</span>
+                                        <h3 class="kpi-value" id="kpi-clientes">1.482</h3>
+                                    </div>
+                                    <div class="kpi-icon-box bg-cyan-glow">
+                                        <i class="fa-solid fa-users"></i>
+                                    </div>
+                                </div>
+                                <div class="kpi-card-footer">
+                                    <span class="trend-indicator up">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +4.8%
+                                    </span>
+                                    <span class="kpi-footer-text">novos este mês</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card premium-card card-glow-success">
+                                <div class="kpi-card-header">
+                                    <div>
+                                        <span class="kpi-title">Total de Vendas</span>
+                                        <h3 class="kpi-value" id="kpi-vendas">384</h3>
+                                    </div>
+                                    <div class="kpi-icon-box bg-success-glow">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                    </div>
+                                </div>
+                                <div class="kpi-card-footer">
+                                    <span class="trend-indicator up">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +8.2%
+                                    </span>
+                                    <span class="kpi-footer-text">conversão: 2.8%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card premium-card card-glow-warning" id="kpi-alerta-estoque-container">
+                                <div class="kpi-card-header">
+                                    <div>
+                                        <span class="kpi-title">Alertas de Estoque</span>
+                                        <h3 class="kpi-value text-warning" id="kpi-alertas">2</h3>
+                                    </div>
+                                    <div class="kpi-icon-box bg-warning-glow">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                    </div>
+                                </div>
+                                <div class="kpi-card-footer">
+                                    <span class="trend-indicator down" id="kpi-alertas-status">
+                                        <i class="fa-solid fa-boxes-stacked"></i> Estoque crítico
+                                    </span>
+                                    <span class="kpi-footer-text" id="kpi-alertas-detalhe">Itens abaixo do mínimo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seção de Gráficos de Inteligência de Negócio -->
+                    <div class="row g-4 mb-4">
+                        <!-- Gráfico 1: Faturamento vs Despesas -->
+                        <div class="col-lg-8">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title">Fluxo de Caixa Operacional</h5>
+                                        <p class="chart-card-subtitle">Faturamento total acumulado vs. despesas
+                                            operacionais no ano atual</p>
+                                    </div>
+                                    <div class="chart-actions">
+                                        <button class="chart-action-btn active" data-range="ano">Ano</button>
+                                        <button class="chart-action-btn" data-range="semestre">Semestre</button>
+                                        <button class="chart-export-btn" id="exportFinanceiroChartBtn"><i
+                                                class="fa-solid fa-download me-1"></i> Exportar</button>
+                                    </div>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="chart-financeiro"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico 2: Canais de Aquisição -->
+                        <div class="col-lg-4">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title">Canais de Vendas</h5>
+                                        <p class="chart-card-subtitle">Volume de faturamento por integrador de
+                                            e-commerce e vendas físicas</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="chart-wrapper doughnut-container d-flex justify-content-center align-items-center">
+                                    <canvas id="chart-canais"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- Tabela de Produtos Mais Vendidos -->
+                        <div class="col-xl-7">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title">Top Produtos Vendidos</h5>
+                                        <p class="chart-card-subtitle">Ranking de performance de vendas e lucratividade
+                                            do mês corrente</p>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>Produto</th>
+                                                <th>Categoria</th>
+                                                <th>Vendas</th>
+                                                <th>Margem</th>
+                                                <th>Faturamento</th>
+                                                <th>Popularidade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="top-products-tbody">
+                                            <!-- Inserido dinamicamente via JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feed de Atividade de Integração -->
+                        <div class="col-xl-5">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title">Log de Eventos (Integrações & Webhooks)</h5>
+                                        <p class="chart-card-subtitle">Atividades das APIs conectadas ao sistema ERP em
+                                            tempo real</p>
+                                    </div>
+                                    <span class="badge-status-glow active">Real-Time</span>
+                                </div>
+                                <div class="activity-feed" id="activity-feed-container">
+                                    <!-- Log de atividades gerado dinamicamente -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ABA 2: FINANCEIRO (LANÇAMENTOS & FLUXO)
+                     ========================================== -->
+                <div class="content-pane" id="tab-financeiro">
+                    <!-- KPI Financeiro Especializado -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="financial-metric-card income">
+                                <div class="metric-icon"><i class="fa-solid fa-circle-arrow-up"></i></div>
+                                <div>
+                                    <span class="metric-label">Receitas Confirmadas</span>
+                                    <h4 class="metric-val" id="fin-receitas-val">R$ 178.400,00</h4>
+                                    <small class="text-success"><i
+                                            class="fa-solid fa-clock-rotate-left me-1"></i>Últimos 30 dias</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="financial-metric-card expense">
+                                <div class="metric-icon"><i class="fa-solid fa-circle-arrow-down"></i></div>
+                                <div>
+                                    <span class="metric-label">Despesas Confirmadas</span>
+                                    <h4 class="metric-val" id="fin-despesas-val">R$ 35.550,00</h4>
+                                    <small class="text-danger"><i class="fa-solid fa-clock-rotate-left me-1"></i>Últimos
+                                        30 dias</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="financial-metric-card balance">
+                                <div class="metric-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                                <div>
+                                    <span class="metric-label">Saldo em Caixa (Líquido)</span>
+                                    <h4 class="metric-val text-info" id="fin-saldo-val">R$ 142.850,00</h4>
+                                    <small class="text-info"><i class="fa-solid fa-shield-halved me-1"></i>Saúde de
+                                        caixa excelente</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barra de Controle do Financeiro -->
+                    <div class="glass-card p-4 mb-4">
+                        <div class="control-bar">
+                            <div class="control-bar-left">
+                                <button class="btn-primary-neon" id="openNewTransactionModal">
+                                    <i class="fa-solid fa-plus me-2"></i>Novo Lançamento
+                                </button>
+                                <button class="btn-secondary-neon ms-2" id="exportFinanceiroCsvBtn">
+                                    <i class="fa-solid fa-file-excel me-2"></i>Exportar Planilha (CSV)
+                                </button>
+                            </div>
+
+                            <div class="control-bar-right">
+                                <div class="filter-group">
+                                    <label class="filter-label"><i class="fa-solid fa-filter me-1"></i>Tipo:</label>
+                                    <select class="filter-select" id="filter-financeiro-tipo">
+                                        <option value="Todos">Todos os Lançamentos</option>
+                                        <option value="Receita">Apenas Receitas</option>
+                                        <option value="Despesa">Apenas Despesas</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label class="filter-label"><i
+                                            class="fa-solid fa-bars-filter me-1"></i>Status:</label>
+                                    <select class="filter-select" id="filter-financeiro-status">
+                                        <option value="Todos">Todos Status</option>
+                                        <option value="Pago">Pago / Recebido</option>
+                                        <option value="Pendente">Pendente</option>
+                                        <option value="Atrasado">Atrasado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela Principal do Financeiro -->
+                    <div class="glass-card p-4">
+                        <h5 class="table-section-title mb-3"><i
+                                class="fa-solid fa-receipt me-2 text-primary"></i>Lançamentos de Contas (Receber /
+                            Pagar)</h5>
+                        <div class="table-responsive">
+                            <table class="table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Cód</th>
+                                        <th>Descrição</th>
+                                        <th>Data de Vencimento</th>
+                                        <th>Categoria</th>
+                                        <th>Tipo</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="financeiro-table-tbody">
+                                    <!-- Inserido dinamicamente via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ABA 3: VENDAS & CRM (PIPELINE & FUNNEL)
+                     ========================================== -->
+                <div class="content-pane" id="tab-vendas">
+                    <div class="row g-4 mb-4">
+                        <!-- Funil de Vendas Visual (CRM Pipeline) -->
+                        <div class="col-lg-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-filter-list me-2 text-primary"></i>Funil do CRM de
+                                            Clientes</h5>
+                                        <p class="chart-card-subtitle">Distribuição e taxa de conversão dos leads ao
+                                            longo do pipeline de negócios</p>
+                                    </div>
+                                    <button class="btn-small-glow" id="btnSimulateLead"><i
+                                            class="fa-solid fa-plus me-1"></i> Simular Lead</button>
+                                </div>
+
+                                <div class="crm-pipeline-container">
+                                    <div class="crm-funnel-stage">
+                                        <div class="stage-info">
+                                            <span class="stage-name"><i
+                                                    class="fa-regular fa-lightbulb text-warning me-2"></i>Prospecção
+                                                (Leads)</span>
+                                            <span class="stage-count" id="crm-stage-leads-count">24 Leads</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-warning-glow" style="width: 100%">R$ 145.000,00
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="crm-funnel-stage">
+                                        <div class="stage-info">
+                                            <span class="stage-name"><i
+                                                    class="fa-regular fa-handshake text-info me-2"></i>Qualificação &
+                                                Contato</span>
+                                            <span class="stage-count" id="crm-stage-contato-count">14 Contatos</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-info-glow" style="width: 70%">R$ 98.400,00</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="crm-funnel-stage">
+                                        <div class="stage-info">
+                                            <span class="stage-name"><i
+                                                    class="fa-solid fa-file-invoice-dollar text-purple me-2"></i>Proposta
+                                                Enviada</span>
+                                            <span class="stage-count" id="crm-stage-proposta-count">8 Negócios</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-purple-glow" style="width: 45%">R$ 54.000,00
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="crm-funnel-stage">
+                                        <div class="stage-info">
+                                            <span class="stage-name"><i
+                                                    class="fa-solid fa-circle-check text-success me-2"></i>Fechado
+                                                (Ganho)</span>
+                                            <span class="stage-count" id="crm-stage-fechado-count">19 Ganhos</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-success-glow" style="width: 32%">R$ 38.600,00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico de Desempenho Mensal de Vendas -->
+                        <div class="col-lg-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-chart-simple me-2 text-primary"></i>Volume Diário de
+                                            Vendas</h5>
+                                        <p class="chart-card-subtitle">Acompanhamento diário de tickets emitidos e média
+                                            histórica</p>
+                                    </div>
+                                    <button class="btn-primary-neon btn-sm" id="openNewSaleModal">
+                                        <i class="fa-solid fa-circle-plus me-1"></i> Nova Venda
+                                    </button>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="chart-vendas-mes"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Vendas Registradas -->
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="table-section-title mb-0"><i
+                                    class="fa-solid fa-cash-register me-2 text-primary"></i>Histórico Recente de Vendas
+                                Concluídas</h5>
+                            <div class="search-wrapper m-0">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                <input type="text" id="salesSearch" class="search-input"
+                                    placeholder="Pesquisar venda...">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Cód Venda</th>
+                                        <th>Cliente</th>
+                                        <th>Produto</th>
+                                        <th>Data/Hora</th>
+                                        <th>Canal de Aquisição</th>
+                                        <th>Valor da Transação</th>
+                                        <th>Comissão (Representante)</th>
+                                        <th>Status da Entrega</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="vendas-table-tbody">
+                                    <!-- Inserido dinamicamente via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ABA 4: CONTROLE DE ESTOQUE (INVENTÁRIO)
+                     ========================================== -->
+                <div class="content-pane" id="tab-estoque">
+                    <!-- Métricas de Inventário -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                            <div class="inventory-indicator-card">
+                                <span class="indicator-title">Total de Itens Cadastrados</span>
+                                <h4 class="indicator-value" id="inventory-total-items">14</h4>
+                                <span class="indicator-info"><i class="fa-solid fa-tags me-1"></i>3 Categorias</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="inventory-indicator-card">
+                                <span class="indicator-title">Patrimônio em Estoque</span>
+                                <h4 class="indicator-value text-cyan" id="inventory-asset-value">R$ 48.920,00</h4>
+                                <span class="indicator-info"><i class="fa-solid fa-vault me-1"></i>Preço de Custo
+                                    Total</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="inventory-indicator-card">
+                                <span class="indicator-title">Giro de Estoque Anual</span>
+                                <h4 class="indicator-value text-success">8.4x</h4>
+                                <span class="indicator-info"><i class="fa-solid fa-arrows-spin me-1"></i>Média de
+                                    mercado excelente</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="inventory-indicator-card border-warning-pulse" id="inventory-critical-card">
+                                <span class="indicator-title">Itens Críticos (Reposição)</span>
+                                <h4 class="indicator-value text-warning" id="inventory-critical-count">2</h4>
+                                <span class="indicator-info text-warning"><i
+                                        class="fa-solid fa-triangle-exclamation me-1"></i>Estoque abaixo do
+                                    mínimo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros e Operações de Estoque -->
+                    <div class="glass-card p-4 mb-4">
+                        <div class="control-bar">
+                            <div class="control-bar-left">
+                                <button class="btn-primary-neon" id="openNewProductModal">
+                                    <i class="fa-solid fa-plus me-2"></i>Cadastrar Novo Produto
+                                </button>
+                                <button class="btn-secondary-neon ms-2" id="simulaSaidaEstoqueBtn">
+                                    <i class="fa-solid fa-box-open me-2"></i>Gera Saída de Teste
+                                </button>
+                            </div>
+
+                            <div class="control-bar-right">
+                                <div class="search-wrapper w-100 my-0">
+                                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                    <input type="text" id="estoqueSearchInput" class="search-input"
+                                        placeholder="Pesquisar por nome ou código do produto...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Controle de Estoque -->
+                    <div class="glass-card p-4">
+                        <h5 class="table-section-title mb-3"><i
+                                class="fa-solid fa-cubes me-2 text-primary"></i>Inventário de Produtos & Controle de
+                            Estoque Mínimo</h5>
+                        <div class="table-responsive">
+                            <table class="table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Cód</th>
+                                        <th>Nome do Produto</th>
+                                        <th>Categoria</th>
+                                        <th>Preço de Custo</th>
+                                        <th>Preço de Venda</th>
+                                        <th>Qtd. Atual</th>
+                                        <th>Qtd. Mínima</th>
+                                        <th>Status do Estoque</th>
+                                        <th class="text-center">Ajuste Rápido</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="estoque-table-tbody">
+                                    <!-- Inserido dinamicamente via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ABA 5: RECURSOS HUMANOS & PERFORMANCE
+                     ========================================== -->
+                <div class="content-pane" id="tab-rh">
+                    <div class="row g-4 mb-4">
+                        <!-- Desempenho Coletivo -->
+                        <div class="col-lg-4">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-medal text-warning me-2"></i>Performance da Equipe
+                                        </h5>
+                                        <p class="chart-card-subtitle">Indicadores Chave de Performance (KPIs)
+                                            acumulados do time</p>
+                                    </div>
+                                </div>
+
+                                <div class="kpi-group-progress mt-4">
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="progress-title-sm">Cumprimento de Metas</span>
+                                            <span class="progress-val-sm">92%</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-success-glow" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="progress-title-sm">Nível de Retenção de Clientes (Churn)</span>
+                                            <span class="progress-val-sm">0.8%</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-cyan-glow" style="width: 99%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="progress-title-sm">Nível de Satisfação do Cliente (CSAT)</span>
+                                            <span class="progress-val-sm">4.7 / 5.0</span>
+                                        </div>
+                                        <div class="progress progress-custom">
+                                            <div class="progress-bar bg-purple-glow" style="width: 94%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visão de Cargos e Salários (RH Insight) -->
+                        <div class="col-lg-8">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-users text-primary me-2"></i>Quadro de Colaboradores
+                                            & Cargos</h5>
+                                        <p class="chart-card-subtitle">Gestão de desempenho individual, metas e
+                                            classificação de performance da empresa</p>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>Colaborador</th>
+                                                <th>Cargo / Departamento</th>
+                                                <th>Performance</th>
+                                                <th>Status</th>
+                                                <th>Meta de Vendas</th>
+                                                <th>Feedback</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="colaboradores-table-tbody">
+                                            <!-- Inserido dinamicamente via JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     ABA 6: CONFIGURAÇÕES & CENTRAL DE INTEGRAÇÕES
+                     ========================================== -->
+                <div class="content-pane" id="tab-configuracoes">
+                    <div class="row g-4">
+                        <!-- Hub de Integrações ERP -->
+                        <div class="col-lg-7">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box mb-4">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-network-wired text-primary me-2"></i>Hub de
+                                            Integrações Analíticas</h5>
+                                        <p class="chart-card-subtitle">Habilite conexões API e sincronizações
+                                            automáticas com canais de vendas externos</p>
+                                    </div>
+                                </div>
+
+                                <div class="integrations-list">
+                                    <!-- Shopify -->
+                                    <div class="integration-item">
+                                        <div class="integration-brand">
+                                            <div class="brand-avatar shopify-bg">
+                                                <i class="fa-brands fa-shopify"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="brand-name">Shopify Store API</h6>
+                                                <span class="brand-desc">Sincroniza pedidos, clientes e estoque
+                                                    automaticamente.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch form-switch-custom">
+                                            <input class="form-check-input integration-toggle-switch" type="checkbox"
+                                                id="toggle-shopify" checked>
+                                            <label class="form-check-label" for="toggle-shopify"
+                                                id="status-shopify">Ativo</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mercado Livre -->
+                                    <div class="integration-item">
+                                        <div class="integration-brand">
+                                            <div class="brand-avatar meli-bg">
+                                                <i class="fa-solid fa-handshake"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="brand-name">Mercado Livre Integrador</h6>
+                                                <span class="brand-desc">Importa vendas realizadas e gerencia etiquetas
+                                                    de envio.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch form-switch-custom">
+                                            <input class="form-check-input integration-toggle-switch" type="checkbox"
+                                                id="toggle-meli" checked>
+                                            <label class="form-check-label" for="toggle-meli"
+                                                id="status-meli">Ativo</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bling -->
+                                    <div class="integration-item">
+                                        <div class="integration-brand">
+                                            <div class="brand-avatar bling-bg">
+                                                <i class="fa-solid fa-building-columns"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="brand-name">Bling! ERP Gateway</h6>
+                                                <span class="brand-desc">Emissão de notas fiscais eletrônicas (NF-e)
+                                                    automatizada.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch form-switch-custom">
+                                            <input class="form-check-input integration-toggle-switch" type="checkbox"
+                                                id="toggle-bling">
+                                            <label class="form-check-label" for="toggle-bling"
+                                                id="status-bling">Inativo</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- TOTVS/SAP -->
+                                    <div class="integration-item">
+                                        <div class="integration-brand">
+                                            <div class="brand-avatar sap-bg">
+                                                <i class="fa-solid fa-database"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="brand-name">Conexão SAP / TOTVS Server</h6>
+                                                <span class="brand-desc">Sincroniza contabilidade profunda e livro
+                                                    fiscal corporativo.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch form-switch-custom">
+                                            <input class="form-check-input integration-toggle-switch" type="checkbox"
+                                                id="toggle-sap">
+                                            <label class="form-check-label" for="toggle-sap"
+                                                id="status-sap">Inativo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Configurações Locais de Mock -->
+                        <div class="col-lg-5">
+                            <div class="glass-card p-4 h-100">
+                                <div class="card-title-box mb-4">
+                                    <div>
+                                        <h5 class="chart-card-title"><i
+                                                class="fa-solid fa-gears text-primary me-2"></i>Configurações do Painel
+                                        </h5>
+                                        <p class="chart-card-subtitle">Ajuste o comportamento do dashboard e simule
+                                            ações do sistema</p>
+                                    </div>
+                                </div>
+
+                                <form id="config-form" onsubmit="event.preventDefault();">
+                                    <div class="mb-3">
+                                        <label class="form-label-custom">Tema do Painel</label>
+                                        <select class="form-control-custom" id="config-tema">
+                                            <option value="theme-neon-violet">Neon Violet (Cyberpunk Padrão)</option>
+                                            <option value="theme-emerald-aurora">Emerald Aurora (Aurora Boreal)</option>
+                                            <option value="theme-crimson-nova">Crimson Nova (Solar & Fogo)</option>
+                                            <option value="theme-oceanic-abyss">Oceanic Abyss (Profundo & Aqua)</option>
+                                            <option value="theme-pearl-light">Pearl Light (Modo Claro de Luxo)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label-custom">Moeda Padrão</label>
+                                        <select class="form-control-custom" id="config-moeda">
+                                            <option value="BRL">Real Brasileiro (R$)</option>
+                                            <option value="USD">Dólar Americano ($)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label-custom">Modo de Exibição de Gráficos</label>
+                                        <select class="form-control-custom" id="config-grafico-efeito">
+                                            <option value="gradient">Gradiente Neon Brilhante (Recomendado)</option>
+                                            <option value="solid">Cores Sólidas Planas</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label-custom">Simulação de Fluxo de Dados</label>
+                                        <div class="form-check form-switch form-switch-custom mb-2">
+                                            <input class="form-check-input" type="checkbox"
+                                                id="toggle-realtime-simulator" checked>
+                                            <label class="form-check-label text-light opacity-75"
+                                                for="toggle-realtime-simulator">Simular Vendas / Notas em Tempo
+                                                Real</label>
+                                        </div>
+                                    </div>
+
+                                    <hr class="border-secondary opacity-25 mb-4">
+
+                                    <div class="d-flex flex-column gap-2">
+                                        <button class="btn-danger-neon w-100" id="resetSystemBtn">
+                                            <i class="fa-solid fa-trash-can me-2"></i>Resetar Banco de Dados Local
+                                        </button>
+                                        <p class="text-center text-muted fs-7 mb-0">Esta ação apaga os dados locais e
+                                            restaura a simulação padrão inicial do ERP.</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================
+         MODAIS CUSTOMIZADOS (FROSTED GLASS MODALS)
+         ========================================== -->
+
+    <!-- Modal 1: Novo Lançamento Financeiro -->
+    <div class="custom-modal-overlay" id="modalFinanceiro">
+        <div class="custom-modal-box glass-card card-glow-purple">
+            <div class="modal-header-custom">
+                <h5><i class="fa-solid fa-wallet text-primary me-2"></i>Novo Lançamento Financeiro</h5>
+                <button class="modal-close-btn" data-close="modalFinanceiro"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-financeiro">
+                <div class="modal-body-custom">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label-custom">Descrição do Lançamento</label>
+                            <input type="text" class="form-control-custom" id="fin-descricao"
+                                placeholder="Ex: Assinatura Servidor Cloud AWS" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Valor (R$)</label>
+                            <input type="number" class="form-control-custom" id="fin-valor" step="0.01"
+                                placeholder="0.00" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Tipo</label>
+                            <select class="form-control-custom" id="fin-tipo" required>
+                                <option value="Receita">Receita (Entrada)</option>
+                                <option value="Despesa" selected>Despesa (Saída)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Data de Vencimento</label>
+                            <input type="date" class="form-control-custom" id="fin-data" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Categoria</label>
+                            <select class="form-control-custom" id="fin-categoria" required>
+                                <option value="Serviços Cloud">Serviços Cloud</option>
+                                <option value="Venda Licenças">Venda de Licenças</option>
+                                <option value="Marketing & Anúncios">Marketing & Anúncios</option>
+                                <option value="Infraestrutura">Infraestrutura</option>
+                                <option value="Consultoria Premium">Consultoria Premium</option>
+                                <option value="Salários & Pessoas">Salários & Pessoas</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label-custom">Status</label>
+                            <select class="form-control-custom" id="fin-status" required>
+                                <option value="Pago">Pago / Confirmado</option>
+                                <option value="Pendente" selected>Pendente (A vencer)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer-custom">
+                    <button type="button" class="btn-modal-cancel" data-close="modalFinanceiro">Cancelar</button>
+                    <button type="submit" class="btn-modal-submit">Salvar Lançamento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Registrar Nova Venda -->
+    <div class="custom-modal-overlay" id="modalVenda">
+        <div class="custom-modal-box glass-card card-glow-success">
+            <div class="modal-header-custom">
+                <h5><i class="fa-solid fa-cart-shopping text-success me-2"></i>Registrar Nova Venda</h5>
+                <button class="modal-close-btn" data-close="modalVenda"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-venda">
+                <div class="modal-body-custom">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label-custom">Nome do Cliente / Razão Social</label>
+                            <input type="text" class="form-control-custom" id="vend-cliente"
+                                placeholder="Ex: Metalúrgica Alfa Ltda" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label-custom">Produto / Serviço Vendido</label>
+                            <select class="form-control-custom" id="vend-produto" required>
+                                <!-- Será populado dinamicamente com itens do estoque -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Valor da Transação (R$)</label>
+                            <input type="number" class="form-control-custom" id="vend-valor" step="0.01"
+                                placeholder="0.00" required>
+                            <small class="text-muted fs-7">Deixe em branco para usar o preço padrão.</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Canal de Venda</label>
+                            <select class="form-control-custom" id="vend-canal" required>
+                                <option value="Shopify Store">Shopify Store (Integração)</option>
+                                <option value="Mercado Livre">Mercado Livre (Integração)</option>
+                                <option value="Vendedor Direto">Vendedor Direto (Físico)</option>
+                                <option value="Negociação CRM">Negociação CRM (B2B)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Quantidade</label>
+                            <input type="number" class="form-control-custom" id="vend-quantidade" value="1" min="1"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Representante</label>
+                            <select class="form-control-custom" id="vend-representante" required>
+                                <option value="Matheus Santos">Matheus Santos (Comercial)</option>
+                                <option value="Beatriz Souza">Beatriz Souza (Sucesso do Cliente)</option>
+                                <option value="Carlos Eduardo">Carlos Eduardo (Novos Negócios)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer-custom">
+                    <button type="button" class="btn-modal-cancel" data-close="modalVenda">Cancelar</button>
+                    <button type="submit" class="btn-modal-submit bg-success-glow">Emitir Pedido & NF-e</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: Cadastrar Novo Produto -->
+    <div class="custom-modal-overlay" id="modalEstoque">
+        <div class="custom-modal-box glass-card card-glow-cyan">
+            <div class="modal-header-custom">
+                <h5><i class="fa-solid fa-boxes-stacked text-info me-2"></i>Cadastrar Novo Produto</h5>
+                <button class="modal-close-btn" data-close="modalEstoque"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-estoque">
+                <div class="modal-body-custom">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label-custom">Nome do Produto</label>
+                            <input type="text" class="form-control-custom" id="est-nome"
+                                placeholder="Ex: Smart Hub Hublink 5G" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Categoria</label>
+                            <select class="form-control-custom" id="est-categoria" required>
+                                <option value="Eletrônicos">Eletrônicos</option>
+                                <option value="Acessórios IT">Acessórios IT</option>
+                                <option value="Servidores">Servidores</option>
+                                <option value="Licenciamento">Licenciamento</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Quantidade Inicial</label>
+                            <input type="number" class="form-control-custom" id="est-qtd" min="0" placeholder="10"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Preço de Custo (R$)</label>
+                            <input type="number" class="form-control-custom" id="est-custo" step="0.01"
+                                placeholder="0.00" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label-custom">Preço de Venda (R$)</label>
+                            <input type="number" class="form-control-custom" id="est-venda" step="0.01"
+                                placeholder="0.00" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label-custom">Estoque Mínimo de Alerta</label>
+                            <input type="number" class="form-control-custom" id="est-minimo" min="1" placeholder="5"
+                                required>
+                            <small class="text-muted fs-7">O sistema emitirá alertas críticos de reposição abaixo desta
+                                quantidade.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer-custom">
+                    <button type="button" class="btn-modal-cancel" data-close="modalEstoque">Cancelar</button>
+                    <button type="submit" class="btn-modal-submit bg-cyan-glow">Adicionar ao Inventário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SISTEMA DE TOAST NOTIFICATIONS (ALERTAS FLUENTES)
+         ========================================== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Bibliotecas jQuery & Chart.js -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Script Principal com Regras de Negócio e Dados Mock -->
+    <script src="script.js"></script>
+</body>
+
+</html>
