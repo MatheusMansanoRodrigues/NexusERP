@@ -906,11 +906,11 @@ $(function () {
       tbody.append(`
                 <tr>
                     <td><strong>${r.name}</strong></td>
-                    <td><span class="badge-status-glow info">${r.cat}</span></td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow info">${r.cat}</span></td>
                     <td>${r.vendas} un.</td>
-                    <td class="text-success">${r.margem}</td>
+                    <td class="text-success d-none d-md-table-cell">${r.margem}</td>
                     <td><strong>${formatCurrency(r.faturamento)}</strong></td>
-                    <td>
+                    <td class="d-none d-md-table-cell">
                         <span class="me-2">${r.pct}%</span>
                         <div class="pop-bar-bg">
                             <div class="pop-bar-fill" style="width: ${r.pct}%; background-color: ${r.fill}; box-shadow: 0 0 8px ${r.fill}50;"></div>
@@ -965,11 +965,11 @@ $(function () {
 
       tbody.append(`
                 <tr>
-                    <td><code>${f.cod}</code></td>
+                    <td class="d-none d-md-table-cell"><code>${f.cod}</code></td>
                     <td><strong>${f.desc}</strong></td>
-                    <td>${f.data.split("-").reverse().join("/")}</td>
-                    <td><span class="badge-status-glow info">${f.categoria}</span></td>
-                    <td>${tipoBadge}</td>
+                    <td class="d-none d-md-table-cell">${f.data.split("-").reverse().join("/")}</td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow info">${f.categoria}</span></td>
+                    <td class="d-none d-md-table-cell">${tipoBadge}</td>
                     <td class="stock-value-cell ${f.tipo === "Receita" ? "text-success" : "text-light"}">${formatCurrency(f.valor)}</td>
                     <td><span class="${badgeClass}">${f.status}</span></td>
                     <td class="text-center">
@@ -1019,13 +1019,13 @@ $(function () {
 
       tbody.append(`
                 <tr>
-                    <td><code>${v.cod}</code></td>
+                    <td class="d-none d-md-table-cell"><code>${v.cod}</code></td>
                     <td><strong>${v.cliente}</strong></td>
                     <td>${v.produto}</td>
-                    <td>${v.data}</td>
-                    <td><span class="badge-status-glow info">${v.canal}</span></td>
+                    <td class="d-none d-md-table-cell">${v.data}</td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow info">${v.canal}</span></td>
                     <td class="text-success stock-value-cell">${formatCurrency(v.valor)}</td>
-                    <td class="text-muted">${formatCurrency(v.comissao)}</td>
+                    <td class="text-muted d-none d-md-table-cell">${formatCurrency(v.comissao)}</td>
                     <td>${statusBadge}</td>
                 </tr>
             `);
@@ -1079,14 +1079,14 @@ $(function () {
 
       tbody.append(`
                 <tr id="row-prod-${p.cod}">
-                    <td><code>${p.cod}</code></td>
+                    <td class="d-none d-md-table-cell"><code>${p.cod}</code></td>
                     <td><strong>${p.nome}</strong></td>
-                    <td><span class="badge-status-glow info">${p.categoria}</span></td>
-                    <td class="text-muted">${formatCurrency(p.custo)}</td>
-                    <td class="stock-value-cell">${formatCurrency(p.venda)}</td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow info">${p.categoria}</span></td>
+                    <td class="text-muted d-none d-md-table-cell">${formatCurrency(p.custo)}</td>
+                    <td class="stock-value-cell d-none d-md-table-cell">${formatCurrency(p.venda)}</td>
                     <td class="text-center font-monospace" id="cell-qtd-${p.cod}"><strong>${p.qtd}</strong> un.</td>
-                    <td class="text-muted font-monospace">${p.min} un.</td>
-                    <td><span class="${statusClass}" id="badge-status-${p.cod}">${statusText}</span></td>
+                    <td class="text-muted font-monospace d-none d-md-table-cell">${p.min} un.</td>
+                    <td class="d-none d-md-table-cell"><span class="${statusClass}" id="badge-status-${p.cod}">${statusText}</span></td>
                     <td class="text-center">
                         <div class="stock-adjust-box">
                             <button class="btn-stock-adj minus adjust-stock-btn" data-cod="${p.cod}" data-dir="down">-</button>
@@ -1139,12 +1139,12 @@ $(function () {
                             </div>
                         </div>
                     </td>
-                    <td><span class="badge-status-glow info">${c.dept}</span></td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow info">${c.dept}</span></td>
                     <td>
                         <div class="rating-stars" data-name="${c.nome}">${stars}</div>
                     </td>
-                    <td><span class="badge-status-glow active">${c.status}</span></td>
-                    <td><strong>${c.meta}</strong> atingida</td>
+                    <td class="d-none d-md-table-cell"><span class="badge-status-glow active">${c.status}</span></td>
+                    <td class="d-none d-md-table-cell"><strong>${c.meta}</strong> atingida</td>
                     <td>
                         <button class="btn-small-glow feedback-colaborador-btn" data-name="${c.nome}">
                             <i class="fa-regular fa-comment-dots me-1"></i> Feedback
