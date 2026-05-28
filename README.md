@@ -1,4 +1,4 @@
-# 🚀 NexusERP - Enterprise Portal
+#  NexusERP - Enterprise Portal
 
 [![Aesthetics: Premium](https://img.shields.io/badge/Aesthetics-Premium%20Glassmorphism-purple.svg)](#)
 [![Tech Stack: Vanilla](https://img.shields.io/badge/Tech%20Stack-HTML5%20%7C%20CSS3%20%7C%20JS%20%7C%20jQuery-blue.svg)](#)
